@@ -10,13 +10,15 @@ module.exports = {
         "eslint:recommended",
         "plugin:prettier/recommended"
     ],
+    "parser": "babel-eslint",
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true,
             "modules": true
         },
         "ecmaVersion": 6,
-        "sourceType": "module"
+        "sourceType": "module",
+        "allowImportExportEverywhere": true
     },
     "plugins": [
         "react",
