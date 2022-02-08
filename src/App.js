@@ -4,7 +4,7 @@ import HomePage from "./pages/home/Home.page";
 import ProductListPage from "./pages/productList/ProductList.page";
 
 function App() {
-  const [isHomePage, setIsHomePage] = useState(false);
+  const [isHomePage, setIsHomePage] = useState(true);
 
   const handleNavigateHome = () => {
     setIsHomePage(true);
