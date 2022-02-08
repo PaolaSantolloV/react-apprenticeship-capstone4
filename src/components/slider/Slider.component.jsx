@@ -13,8 +13,6 @@ import {
 
 // eslint-disable-next-line react/prop-types
 function Slider() {
-  console.log(feauturedBanners);
-
   const banners = feauturedBanners.results;
   const delay = 2500;
 

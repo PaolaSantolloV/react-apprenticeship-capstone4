@@ -12,7 +12,7 @@ export const StyledContainer = styled.div`
     padding-right: 10px;
   }
 
-  @media (max-width: 1020px) {
+  @media (max-width: 1080px) {
     padding-top: 12px;
     padding-left: 20px;
     padding-right: 20px;

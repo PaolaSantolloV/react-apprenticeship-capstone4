@@ -10,11 +10,11 @@ import {
 } from "./Header.styles";
 
 // eslint-disable-next-line react/prop-types
-function Header() {
+function Header({ handleNavigateHome }) {
   return (
     <StyledContainer title="header">
       <StyledContainerLeft>
-        <StyledLabel>Furniture</StyledLabel>
+        <StyledLabel onClick={handleNavigateHome}>Furniture</StyledLabel>
       </StyledContainerLeft>
       <StyledContainerRigth>
         <SearchInput />

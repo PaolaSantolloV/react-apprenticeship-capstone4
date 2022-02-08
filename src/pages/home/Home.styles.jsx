@@ -10,7 +10,7 @@ export const StyledWrapper = styled.div`
 export const StyledWrapperCategories = styled.div`
   padding: 20px;
   background-color: #d8e2dc;
-  border-radius: 2px;
+  border-radius: 3px;
   margin-bottom: 100px;
 `;
 
@@ -66,4 +66,49 @@ export const StyledWrapperTitle = styled.div`
 
 export const StyledIcon = styled.div`
   opacity: 0.75;
+`;
+
+export const StyledContainerProducts = styled.div`
+  width: 100%;
+  margin-bottom: 100px;
+`;
+
+export const StyledContainerAllProducts = styled.div`
+  background-color: #ffe5d9;
+  border-radius: 3px;
+  width: 100%;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
+`;
+
+export const StyledImageAllProducts = styled.img`
+  width: 58%;
+  border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  @media (max-width: 600px) {
+    width: 100%;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 3px;
+  }
+`;
+
+export const StyledWrapperInformationAllProducts = styled.div`
+  padding: 20px;
+  flex-direction: column;
+  justify-content: flex-end;
+  display: flex;
+  text-align: end;
+  align-items: end;
+`;
+
+export const StyledLabelInformationAllProducts = styled.p`
+  font-size: medium;
+  font-weight: 200;
+  color: #212529;
+  font-family: "Mulish";
 `;

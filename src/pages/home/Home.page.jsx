@@ -15,11 +15,17 @@ import {
   StyledWrapperDescription,
   StyledWrapperInformation,
   StyledWrapperTitle,
+  StyledImageAllProducts,
+  StyledContainerAllProducts,
+  StyledWrapperInformationAllProducts,
+  StyledLabelInformationAllProducts,
+  StyledContainerProducts,
 } from "./Home.styles";
 import Slider from "../../components/slider/Slider.component";
+import Button from "../../components/button/Button.component";
 
 // eslint-disable-next-line react/prop-types
-function HomePage() {
+function HomePage({ handleNavigateProductList }) {
   const products = feauturedProducts.results;
   const categories = feauturedCategories.results;
 
@@ -69,7 +75,7 @@ function HomePage() {
           ))}
         </StyledWrapper>
       </StyledWrapperCategories>
-      <div>
+      <StyledContainerProducts>
         <StyledTitle>Feautured products</StyledTitle>
         <StyledWrapper>
           {products.map((product) => (
@@ -82,7 +88,21 @@ function HomePage() {
             />
           ))}
         </StyledWrapper>
-      </div>
+      </StyledContainerProducts>
+      <StyledContainerAllProducts>
+        <StyledImageAllProducts src="./all-products.jpeg" alt="sofa-woman" />
+        <StyledWrapperInformationAllProducts>
+          <StyledLabelInformationAllProducts>
+            All the furniture products you are looking for are available here,
+            enjoy the experience of various furniture.
+          </StyledLabelInformationAllProducts>
+          <Button
+            title="button-all-products"
+            label="View All Products"
+            onClick={handleNavigateProductList}
+          />
+        </StyledWrapperInformationAllProducts>
+      </StyledContainerAllProducts>
     </div>
   );
 }

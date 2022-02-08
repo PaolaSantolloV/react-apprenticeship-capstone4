@@ -5,13 +5,14 @@ import {
   StyledLabelName,
   StyledLabelPrice,
   StyledWrapperInformation,
+  StyledImage,
 } from "./ProductCard.styles";
 
 // eslint-disable-next-line react/prop-types
 function ProductCard({ name, category, price, image }) {
   return (
     <StyledContainerCard title="product-card">
-      <img src={image} alt={name} width="180" />
+      <StyledImage src={image} alt={name} />
       <StyledWrapperInformation>
         <StyledLabelName>{name}</StyledLabelName>
         <StyledLabelCategory>{category}</StyledLabelCategory>
