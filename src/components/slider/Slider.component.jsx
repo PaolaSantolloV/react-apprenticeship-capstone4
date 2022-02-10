@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import feauturedBanners from "../../utils/mocks/featured-banners.json";
+import { useGlobalContext } from "../../context/global/Global.provider";
 import {
   StyledCaption,
   StyledContainer,
@@ -13,8 +13,11 @@ import {
 
 // eslint-disable-next-line react/prop-types
 function Slider() {
-  const banners = feauturedBanners.results;
-  const delay = 2500;
+  const { bannersResult } = useGlobalContext();
+  const banners =
+    bannersResult.isLoading === false ? bannersResult.data.results : [];
+
+  const delay = 5000;
 
   const [index, setIndex] = useState(0);
   const timeoutRef = useRef(null);

@@ -1,10 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { RiHandHeartFill } from "react-icons/ri";
 import { FaShippingFast } from "react-icons/fa";
 import CategoryCard from "../../components/categoryCard/CategoryCard.component";
 import ProductCard from "../../components/productCard/ProductCard.component";
-import feauturedProducts from "../../utils/mocks/featured-products.json";
-import feauturedCategories from "../../utils/mocks/product-categories.json";
 import {
   StyledDescription,
   StyledIcon,
@@ -23,11 +22,21 @@ import {
 } from "./Home.styles";
 import Slider from "../../components/slider/Slider.component";
 import Button from "../../components/button/Button.component";
+import { useGlobalContext } from "../../context/global/Global.provider";
+import Loading from "../../components/loading/Loading.component";
 
 // eslint-disable-next-line react/prop-types
-function HomePage({ handleNavigateProductList }) {
-  const products = feauturedProducts.results;
-  const categories = feauturedCategories.results;
+function HomePage() {
+  const navigate = useNavigate();
+  const { categoriesResult, feauturedResult } = useGlobalContext();
+  const products =
+    feauturedResult.isLoading === false ? feauturedResult.data.results : [];
+  const categories =
+    categoriesResult.isLoading === false ? categoriesResult.data.results : [];
+
+  const handleOnClick = (idProduct) => {
+    navigate(`/product/${idProduct}`);
+  };
 
   return (
     <div title="home-page">
@@ -66,27 +75,36 @@ function HomePage({ handleNavigateProductList }) {
       <StyledWrapperCategories>
         <StyledTitle>Categories</StyledTitle>
         <StyledWrapper>
-          {categories.map((category) => (
-            <CategoryCard
-              key={category.id}
-              name={category.data.name}
-              image={category.data.main_image.url}
-            />
-          ))}
+          {categoriesResult.isLoading === true ? (
+            <Loading />
+          ) : (
+            categories.map((category) => (
+              <CategoryCard
+                key={category.id}
+                name={category.data.name}
+                image={category.data.main_image.url}
+              />
+            ))
+          )}
         </StyledWrapper>
       </StyledWrapperCategories>
       <StyledContainerProducts>
         <StyledTitle>Feautured products</StyledTitle>
         <StyledWrapper>
-          {products.map((product) => (
-            <ProductCard
-              key={product.data.sku}
-              name={product.data.name}
-              category={product.data.category.slug}
-              price={product.data.price}
-              image={product.data.images[0].image.url}
-            />
-          ))}
+          {feauturedResult.isLoading === true ? (
+            <Loading />
+          ) : (
+            products.map((product) => (
+              <ProductCard
+                key={product.data.sku}
+                name={product.data.name}
+                category={product.data.category.slug}
+                price={product.data.price}
+                image={product.data.images[0].image.url}
+                onClick={() => handleOnClick(product.id)}
+              />
+            ))
+          )}
         </StyledWrapper>
       </StyledContainerProducts>
       <StyledContainerAllProducts>
@@ -99,7 +117,7 @@ function HomePage({ handleNavigateProductList }) {
           <Button
             title="button-all-products"
             label="View All Products"
-            onClick={handleNavigateProductList}
+            onClick={() => navigate("/products")}
           />
         </StyledWrapperInformationAllProducts>
       </StyledContainerAllProducts>

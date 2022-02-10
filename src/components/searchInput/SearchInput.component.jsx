@@ -1,15 +1,23 @@
 import React, { useState } from "react";
 import { FiSearch } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import IconButton from "../iconButton/IconButton.component";
 import { StyledContainer, StyledInput } from "./SearchInput.styles";
+
 // eslint-disable-next-line react/prop-types
-function SearchInput({ placeholder, type, value, onChange }) {
+function SearchInput({ placeholder, type, value }) {
+  const navigate = useNavigate();
   const [isInput, setIsInput] = useState(false);
   const [stylesInput, setStylesInput] = useState({
     display: "none",
     width: "30px",
     border: "none",
   });
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const handleOnChange = (event) => {
+    setSearchTerm(event.currentTarget.value);
+  };
 
   const handleOnClick = () => {
     setIsInput(!isInput);
@@ -19,12 +27,15 @@ function SearchInput({ placeholder, type, value, onChange }) {
         width: "121px",
         border: "1px solid",
       });
+      setSearchTerm("");
     } else {
       setStylesInput({
         display: "none",
         width: "30px",
         border: "none",
       });
+      navigate(`/search/:${searchTerm}`);
+      setSearchTerm("");
     }
   };
 
@@ -38,7 +49,7 @@ function SearchInput({ placeholder, type, value, onChange }) {
         title="input-search"
         placeholder={placeholder}
         type={type}
-        onChange={onChange}
+        onChange={(event) => handleOnChange(event)}
         value={value}
         display={stylesInput.display}
       />

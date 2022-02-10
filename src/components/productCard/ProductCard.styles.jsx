@@ -3,13 +3,13 @@ import styled from "styled-components";
 export const StyledContainerCard = styled.div`
   background: #ffffff;
   width: 180px;
-  height: 310px;
+  height: 355px;
   display: flex;
   flex-direction: column;
   margin: 15px;
 
   :hover {
-    box-shadow: 0px 0px 30px -4px #fec5bb;
+    box-shadow: 0px 0px 30px -4px #fae1dd;
   }
 `;
 

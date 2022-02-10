@@ -2,6 +2,7 @@ import React from "react";
 
 // eslint-disable-next-line react/prop-types
 function Checkbox({ title, id, value, onCheck, onChange }) {
+  console.log(onCheck);
   return (
     <input
       type="checkbox"

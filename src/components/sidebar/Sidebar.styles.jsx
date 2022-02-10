@@ -46,3 +46,12 @@ export const StyledLabelCategory = styled.h2`
   padding-left: 5px;
   margin: 0;
 `;
+
+export const StyledLabelClear = styled.h2`
+  font-family: "Mulish";
+  font-size: unset;
+  font-weight: 500;
+  color: #8a5a44;
+  opacity: 0.5;
+  text-align: end;
+`;
