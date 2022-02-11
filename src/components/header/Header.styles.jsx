@@ -33,4 +33,5 @@ export const StyledLabel = styled.h1`
   font-weight: bold;
   font-size: large;
   color: #212529;
+  cursor: pointer;
 `;

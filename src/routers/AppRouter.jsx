@@ -1,6 +1,8 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Layout from "../components/layout/Layout.component";
+import CartPage from "../pages/cart/Cart.page";
+import CheckoutPage from "../pages/checkout/Checkout.page";
 import HomePage from "../pages/home/Home.page";
 import ProductDetailPage from "../pages/productDetail/ProductDetail.page";
 import ProductListPage from "../pages/productList/ProductList.page";
@@ -13,6 +15,8 @@ function AppRouter() {
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route exact path="/home" element={<HomePage />} />
+          <Route exact path="/cart" element={<CartPage />} />
+          <Route exact path="/checkout" element={<CheckoutPage />} />
           <Route exact path="/search/:searchTerm" element={<SearchPage />} />
           <Route
             exact
