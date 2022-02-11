@@ -34,7 +34,7 @@ function SearchInput({ placeholder, type, value }) {
         width: "30px",
         border: "none",
       });
-      navigate(`/search/:${searchTerm}`);
+      navigate(`/search?q=${searchTerm}`);
       setSearchTerm("");
     }
   };
