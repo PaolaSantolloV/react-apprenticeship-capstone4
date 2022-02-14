@@ -21,7 +21,9 @@ function Sidebar({ handleCheck, checked, handleClearFilters }) {
   const categories =
     categoriesResult.isLoading === false ? categoriesResult.data.results : [];
 
-  const [isShowCategories, setIsShowCategories] = useState(false);
+  const [isShowCategories, setIsShowCategories] = useState(
+    checked.length > 0 ? true : false
+  );
 
   const handleShowCategories = () => {
     setIsShowCategories(!isShowCategories);
