@@ -35,3 +35,22 @@ export const StyledLabel = styled.h1`
   color: #212529;
   cursor: pointer;
 `;
+
+export const StyledLabelCountItem = styled.h1`
+  font-family: "Mulish";
+  font-size: x-small;
+  font-weight: 400;
+  color: #212529;
+  text-align: center;
+  margin: 0;
+`;
+
+export const StyledWrapperCount = styled.div`
+  border: 1px solid #212529;
+  border-radius: 24px;
+  height: 12px;
+  width: 12px;
+  margin-left: 4px;
+  justify-content: center;
+  margin-top: -20px;
+`;

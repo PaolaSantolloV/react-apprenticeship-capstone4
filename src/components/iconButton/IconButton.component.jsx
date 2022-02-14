@@ -2,9 +2,9 @@
 import React from "react";
 import { StyledButton } from "./IconButton.styles.jsx";
 
-function IconButton({ title, children, size, onClick }) {
+function IconButton({ title, children, size, onClick, width }) {
   return (
-    <StyledButton size={size} title={title} onClick={onClick}>
+    <StyledButton size={size} title={title} onClick={onClick} width={width}>
       {children}
     </StyledButton>
   );
@@ -13,5 +13,6 @@ function IconButton({ title, children, size, onClick }) {
 IconButton.defaultProps = {
   title: "button",
   size: "20px",
+  width: "20px",
 };
 export default IconButton;

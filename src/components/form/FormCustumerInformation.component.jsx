@@ -1,22 +1,13 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
-import Button from "../button/Button.component";
 import Input from "../input/Input.component";
 import {
   StyledLabel,
   StyledTextarea,
-  StyledWrapperButtons,
   StyledWrapper,
 } from "./FormCustumerInformation.styles";
 
 // eslint-disable-next-line react/prop-types
-function FormCustumerInformation({ onClick }) {
-  const navigate = useNavigate();
-
-  const handleOnReturn = () => {
-    navigate("/cart");
-  };
-
+function FormCustumerInformation() {
   return (
     <>
       <StyledWrapper>
@@ -69,11 +60,6 @@ function FormCustumerInformation({ onClick }) {
 
       <StyledLabel> Notes</StyledLabel>
       <StyledTextarea title="note-input" name="note" rows="6" />
-
-      <StyledWrapperButtons>
-        <Button label="Go back to cart" onClick={handleOnReturn} />
-        <Button label="Place order" onClick={onClick} />
-      </StyledWrapperButtons>
     </>
   );
 }

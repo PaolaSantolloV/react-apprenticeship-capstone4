@@ -1,18 +1,5 @@
 import styled from "styled-components";
 
-export const StyledWrapperButtons = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  align-items: center;
-  height: 70px;
-
-  @media (max-width: 936px) {
-    flex-direction: column;
-    height: 132px;
-  }
-`;
-
 export const StyledWrapper = styled.div`
   flex-direction: row;
   display: flex;

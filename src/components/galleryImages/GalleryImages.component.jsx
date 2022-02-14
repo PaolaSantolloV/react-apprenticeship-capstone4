@@ -7,7 +7,6 @@ function GalleryImages({ images }) {
 
   useEffect(() => {
     if (images.length > 0) {
-      console.log("ok");
       let imagesArray = [];
 
       images.map((img) => {

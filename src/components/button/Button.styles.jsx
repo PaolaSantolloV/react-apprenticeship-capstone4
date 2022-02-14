@@ -11,4 +11,9 @@ export const StyledButton = styled.button`
   font-weight: 400;
   color: ${(props) => props.color};
   cursor: pointer;
+
+  &:disabled {
+    color: #ffffff;
+    background: #e9ecef;
+  }
 `;
