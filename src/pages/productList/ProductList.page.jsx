@@ -16,6 +16,7 @@ function ProductListPage() {
   const [listFilterProducts, setListFilterProducts] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [checked, setChecked] = useState([]);
+  const [currentItems, setCurrentItems] = useState([]);
 
   useEffect(() => {
     loading();
@@ -88,7 +89,7 @@ function ProductListPage() {
                 <h1>No matching products</h1>
               )
             ) : (
-              products.map((product) => (
+              currentItems.map((product) => (
                 <ProductCard
                   key={product.data.sku}
                   name={product.data.name}
@@ -101,7 +102,7 @@ function ProductListPage() {
             )}
             {}
           </StyledWrapperProducts>
-          <Pagination />
+          <Pagination products={products} setCurrentItems={setCurrentItems} />
         </>
       )}
     </StyledContainer>
