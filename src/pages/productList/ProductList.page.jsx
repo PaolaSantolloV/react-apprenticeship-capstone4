@@ -25,6 +25,7 @@ function ProductListPage() {
     loading();
   }, []);
 
+  console.log(category);
   useEffect(() => {
     let categoriesPath = [];
     if (categoriesResult.isLoading === false) {
