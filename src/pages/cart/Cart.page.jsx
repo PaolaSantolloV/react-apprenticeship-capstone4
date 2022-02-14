@@ -24,6 +24,7 @@ function CartPage() {
 
   const handleRemoveProduct = (id) => {
     storageCart.remove(id);
+    navigate("/cart");
   };
 
   return (

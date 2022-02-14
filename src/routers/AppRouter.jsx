@@ -11,7 +11,6 @@ import { storageCart } from "../utils/storage";
 
 function AppRouter() {
   const productsCart = storageCart.get("products");
-  console.log(productsCart.length);
 
   return (
     <BrowserRouter>

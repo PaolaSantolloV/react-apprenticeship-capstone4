@@ -69,14 +69,38 @@ export const StyledLabelPrice = styled.h2`
   text-align: justify;
 `;
 
+export const StyledLabelPriceSelect = styled.h2`
+  font-family: "Mulish";
+  font-size: smaller;
+  font-weight: 400;
+  color: #212529;
+  text-align: justify;
+  margin-left: 5px;
+  margin-right: 5px;
+`;
+
 export const StyledImage = styled.img`
   width: 100px;
   height: 100px;
   border-radius: 3px;
   margin-right: 15px;
+
+  @media (max-width: 450px) {
+    height: 50px;
+    width: 50px;
+  }
 `;
 
 export const StyledWrapperPrice = styled.div`
   display: flex;
   flex-direction: row;
+`;
+
+export const StyledWrapperPriceQuantity = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
 `;

@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { FiTrash } from "react-icons/fi";
 import IconButton from "../iconButton/IconButton.component";
+import Button from "../button/Button.component";
 import {
   StyledContainer,
   StyledImage,
@@ -14,9 +15,14 @@ import {
   StyledLinesTable,
   StyledRow,
   StyledWrapperPrice,
+  StyledWrapperPriceQuantity,
+  StyledLabelPriceSelect,
 } from "./TableCart.styles";
+import { storageCart } from "../../utils/storage";
+import { useNavigate } from "react-router-dom";
 
 function TableCart({ tableInformation, handleRemove }) {
+  const navigate = useNavigate();
   const [total, setTotal] = useState();
 
   useEffect(() => {
@@ -29,6 +35,20 @@ function TableCart({ tableInformation, handleRemove }) {
     }
     setTotal(calcTotal);
   }, []);
+
+  const addItem = (product) => {
+    handleRemove(product);
+    const productCart = { ...product, stockOnCart: product.stockOnCart + 1 };
+    storageCart.set(productCart);
+    navigate("/cart");
+  };
+
+  const removeItem = (product) => {
+    handleRemove(product);
+    const productCart = { ...product, stockOnCart: product.stockOnCart - 1 };
+    storageCart.set(productCart);
+    navigate("/cart");
+  };
 
   return (
     <StyledContainer>
@@ -53,6 +73,33 @@ function TableCart({ tableInformation, handleRemove }) {
                     x {row.stockOnCart}
                   </StyledLabelQuantity>
                 </StyledWrapperPrice>
+              </td>
+              <td>
+                <StyledWrapperPriceQuantity>
+                  <Button
+                    label="-"
+                    width="23px"
+                    height="23px"
+                    bgColor="#E9ECEF"
+                    color="#212529"
+                    onClick={() => removeItem(row)}
+                    disabled={row.stockOnCart - 1 === 0 ? true : false}
+                  />
+                  <StyledLabelPriceSelect>
+                    {row.stockOnCart}
+                  </StyledLabelPriceSelect>
+                  <Button
+                    label="+"
+                    width="23px"
+                    height="23px"
+                    bgColor="#E9ECEF"
+                    color="#212529"
+                    onClick={() => addItem(row)}
+                    disabled={
+                      row.stockOnCart + 1 === row.data.stock ? true : false
+                    }
+                  />
+                </StyledWrapperPriceQuantity>
               </td>
               <td>
                 <IconButton

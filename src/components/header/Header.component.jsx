@@ -33,7 +33,7 @@ function Header() {
       });
     }
     setItems(countItems);
-  }, []);
+  }, [productsCart]);
 
   return (
     <StyledContainer title="header">
