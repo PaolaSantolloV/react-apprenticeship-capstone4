@@ -38,6 +38,10 @@ function HomePage() {
     navigate(`/product/${idProduct}`);
   };
 
+  const handleClickCategory = (slug) => {
+    navigate(`/products?category=${slug}`);
+  };
+
   return (
     <div title="home-page">
       <div>
@@ -83,6 +87,7 @@ function HomePage() {
                 key={category.id}
                 name={category.data.name}
                 image={category.data.main_image.url}
+                onClick={() => handleClickCategory(category.slugs[0])}
               />
             ))
           )}

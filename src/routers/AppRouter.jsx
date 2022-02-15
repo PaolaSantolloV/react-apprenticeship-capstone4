@@ -18,19 +18,7 @@ function AppRouter() {
         <Routes>
           <Route path="/" element={<Navigate replace to="/home" />} />
           <Route exact path="/home" element={<HomePage />} />
-          <Route exact path="/cart" element={<CartPage />} />
-          <Route
-            exact
-            path="/checkout"
-            element={
-              productsCart.length > 0 ? (
-                <CheckoutPage />
-              ) : (
-                <Navigate replace to="/cart" />
-              )
-            }
-          />
-          <Route exact path="/search/:searchTerm" element={<SearchPage />} />
+          <Route exact path="/search" element={<SearchPage />} />
           <Route
             exact
             path="/product/:productId"

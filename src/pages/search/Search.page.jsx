@@ -1,17 +1,20 @@
-import React from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useSearch } from "../../utils/hooks/useSearch";
 import Loading from "../../components/loading/Loading.component";
 import ProductCard from "../../components/productCard/ProductCard.component";
 import { StyledLabelEmpty, StyledWrapperProducts } from "./Search.styles";
+import Pagination from "../../components/pagination/Pagination.component";
 
 // eslint-disable-next-line react/prop-types
 function SearchPage() {
-  const { searchTerm } = useParams();
   const navigate = useNavigate();
-  const data = useSearch(searchTerm);
+  const searchTerm = useLocation();
+  const search = new URLSearchParams(searchTerm.search).get("q");
+  const [currentItems, setCurrentItems] = useState([]);
+
+  const data = useSearch(search);
   const searchResult = data.isLoading === false ? data.data.results : [];
-  console.log(searchResult);
 
   const handleOnClick = (idProduct) => {
     navigate(`/product/${idProduct}`);
@@ -23,7 +26,7 @@ function SearchPage() {
         <Loading />
       ) : searchResult.length > 0 ? (
         <StyledWrapperProducts>
-          {searchResult.map((result) => (
+          {currentItems.map((result) => (
             <ProductCard
               key={result.data.sku}
               name={result.data.name}
@@ -33,6 +36,10 @@ function SearchPage() {
               onClick={() => handleOnClick(result.id)}
             />
           ))}
+          <Pagination
+            products={searchResult}
+            setCurrentItems={setCurrentItems}
+          />
         </StyledWrapperProducts>
       ) : (
         <StyledLabelEmpty>

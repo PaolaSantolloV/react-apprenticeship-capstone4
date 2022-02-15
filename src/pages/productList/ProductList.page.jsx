@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Loading from "../../components/loading/Loading.component";
 import Pagination from "../../components/pagination/Pagination.component";
 import ProductCard from "../../components/productCard/ProductCard.component";
@@ -10,16 +10,34 @@ import { StyledContainer, StyledWrapperProducts } from "./ProductList.styles";
 // eslint-disable-next-line react/prop-types
 function ProductListPage() {
   const navigate = useNavigate();
+  const searchTerm = useLocation();
+  const { categoriesResult } = useGlobalContext();
+  const category = new URLSearchParams(searchTerm.search).get("category");
   const { productsResult } = useGlobalContext();
   const products =
     productsResult.isLoading === false ? productsResult.data.results : [];
   const [listFilterProducts, setListFilterProducts] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [checked, setChecked] = useState([]);
+  const [currentItems, setCurrentItems] = useState([]);
 
   useEffect(() => {
     loading();
   }, []);
+
+  console.log(category);
+  useEffect(() => {
+    let categoriesPath = [];
+    if (categoriesResult.isLoading === false) {
+      categoriesResult.data.results.map((categoryResult) => {
+        if (category === categoryResult.slugs[0]) {
+          categoriesPath.push(categoryResult.id);
+        }
+      });
+    }
+    setChecked(categoriesPath);
+    filterProducts(categoriesPath);
+  }, [categoriesResult]);
 
   function loading() {
     setTimeout(function () {
@@ -41,6 +59,7 @@ function ProductListPage() {
 
   const handleClearFilters = () => {
     setChecked([]);
+    navigate("/products");
   };
 
   const filterProducts = (updatedList) => {
@@ -88,7 +107,7 @@ function ProductListPage() {
                 <h1>No matching products</h1>
               )
             ) : (
-              products.map((product) => (
+              currentItems.map((product) => (
                 <ProductCard
                   key={product.data.sku}
                   name={product.data.name}
@@ -101,7 +120,16 @@ function ProductListPage() {
             )}
             {}
           </StyledWrapperProducts>
-          <Pagination />
+          <Pagination
+            products={
+              checked.length > 0
+                ? listFilterProducts.length > 0
+                  ? listFilterProducts
+                  : []
+                : products
+            }
+            setCurrentItems={setCurrentItems}
+          />
         </>
       )}
     </StyledContainer>

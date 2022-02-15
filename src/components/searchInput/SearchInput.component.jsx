@@ -5,7 +5,7 @@ import IconButton from "../iconButton/IconButton.component";
 import { StyledContainer, StyledInput } from "./SearchInput.styles";
 
 // eslint-disable-next-line react/prop-types
-function SearchInput({ placeholder, type, value }) {
+function SearchInput({ placeholder, type }) {
   const navigate = useNavigate();
   const [isInput, setIsInput] = useState(false);
   const [stylesInput, setStylesInput] = useState({
@@ -34,8 +34,9 @@ function SearchInput({ placeholder, type, value }) {
         width: "30px",
         border: "none",
       });
-      navigate(`/search/:${searchTerm}`);
       setSearchTerm("");
+      navigate(`/search?q=${searchTerm}`);
+      window.location.reload();
     }
   };
 
@@ -50,7 +51,7 @@ function SearchInput({ placeholder, type, value }) {
         placeholder={placeholder}
         type={type}
         onChange={(event) => handleOnChange(event)}
-        value={value}
+        value={searchTerm}
         display={stylesInput.display}
       />
       <IconButton title="search-icon" size="30px" onClick={handleOnClick}>

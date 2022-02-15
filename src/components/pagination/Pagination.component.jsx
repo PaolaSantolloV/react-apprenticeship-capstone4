@@ -1,18 +1,42 @@
-import React from "react";
-import { StyledContainer, StyledItem } from "./Pagination.styles";
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-key */
+import React, { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
+import { StyledContainer } from "./Pagination.styles";
 
-// eslint-disable-next-line react/prop-types
-function Pagination() {
+function Pagination({ products, setCurrentItems }) {
+  const [pageCount, setPageCount] = useState(0);
+  const [itemOffset, setItemOffset] = useState(0);
+  const itemsPerPage = 12;
+  const items = products;
+
+  useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentItems(items.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(items.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage]);
+
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % items.length;
+    setItemOffset(newOffset);
+  };
+
   return (
-    <StyledContainer title="pagination">
-      <StyledItem href="#">&laquo;</StyledItem>
-      <StyledItem href="#">1</StyledItem>
-      <StyledItem href="#">2</StyledItem>
-      <StyledItem href="#">3</StyledItem>
-      <StyledItem href="#">4</StyledItem>
-      <StyledItem href="#">5</StyledItem>
-      <StyledItem href="#">6</StyledItem>
-      <StyledItem href="#">&raquo;</StyledItem>
+    <StyledContainer>
+      <ReactPaginate
+        breakLabel="..."
+        nextLabel="next >"
+        nextLinkClassName="next"
+        onPageChange={handlePageClick}
+        pageRangeDisplayed={5}
+        pageCount={pageCount}
+        pageClassName="page-item"
+        previousLabel="< previous"
+        previousLinkClassName="previous"
+        renderOnZeroPageCount={null}
+        activeClassName="active"
+        containerClassName="ul"
+      />
     </StyledContainer>
   );
 }
