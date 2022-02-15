@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import Input from "../input/Input.component";
 import {
@@ -6,8 +7,7 @@ import {
   StyledWrapper,
 } from "./FormCustumerInformation.styles";
 
-// eslint-disable-next-line react/prop-types
-function FormCustumerInformation() {
+function FormCustumerInformation({ handleChange, formData }) {
   return (
     <>
       <StyledWrapper>
@@ -17,6 +17,8 @@ function FormCustumerInformation() {
           required
           placeholder=""
           widthContainer="48%"
+          value={formData.firstName}
+          onChange={(event) => handleChange({ fieldName: "firstName", event })}
         />
         <Input
           label="Last Name"
@@ -24,6 +26,8 @@ function FormCustumerInformation() {
           required
           placeholder=""
           widthContainer="48%"
+          value={formData.lastName}
+          onChange={(event) => handleChange({ fieldName: "lastName", event })}
         />
       </StyledWrapper>
       <StyledWrapper>
@@ -32,6 +36,8 @@ function FormCustumerInformation() {
           title="address-input"
           placeholder=""
           widthContainer="48%"
+          value={formData.address}
+          onChange={(event) => handleChange({ fieldName: "address", event })}
         />
         <Input
           label="Postal Code"
@@ -39,6 +45,8 @@ function FormCustumerInformation() {
           required
           placeholder=""
           widthContainer="48%"
+          value={formData.cp}
+          onChange={(event) => handleChange({ fieldName: "cp", event })}
         />
       </StyledWrapper>
       <StyledWrapper>
@@ -48,6 +56,8 @@ function FormCustumerInformation() {
           required
           placeholder="name@example.com"
           widthContainer="48%"
+          value={formData.email}
+          onChange={(event) => handleChange({ fieldName: "email", event })}
         />
         <Input
           label="Phone"
@@ -55,11 +65,19 @@ function FormCustumerInformation() {
           required
           placeholder=""
           widthContainer="48%"
+          value={formData.phone}
+          onChange={(event) => handleChange({ fieldName: "phone", event })}
         />
       </StyledWrapper>
 
       <StyledLabel> Notes</StyledLabel>
-      <StyledTextarea title="note-input" name="note" rows="6" />
+      <StyledTextarea
+        title="note-input"
+        name="note"
+        rows="6"
+        value={formData.notes}
+        onChange={(event) => handleChange({ fieldName: "notes", event })}
+      />
     </>
   );
 }
