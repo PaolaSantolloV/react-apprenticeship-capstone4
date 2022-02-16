@@ -1,11 +1,15 @@
 import React from "react";
-import { StyledContainer, StyledLabel } from "./CategoryCard.styles";
+import {
+  StyledContainer,
+  StyledImage,
+  StyledLabel,
+} from "./CategoryCard.styles";
 
 // eslint-disable-next-line react/prop-types
 function CategoryCard({ name, image }) {
   return (
     <StyledContainer title="category-card">
-      <img title="image-category-card" src={image} alt={name} width="180" />
+      <StyledImage title="image-category-card" src={image} alt={name} />
       <StyledLabel title="title-category-card">{name}</StyledLabel>
     </StyledContainer>
   );

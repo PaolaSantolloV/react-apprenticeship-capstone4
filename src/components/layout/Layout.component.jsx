@@ -4,10 +4,10 @@ import Header from "../header/Header.component";
 import { StyledLayout } from "./Layout.styles";
 
 // eslint-disable-next-line react/prop-types
-function Layout({ children }) {
+function Layout({ handleNavigateHome, children }) {
   return (
     <>
-      <Header />
+      <Header handleNavigateHome={handleNavigateHome} />
       <StyledLayout>{children}</StyledLayout>
       <Footer />
     </>

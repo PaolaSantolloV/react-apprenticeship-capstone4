@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const StyledContainerCard = styled.div`
   background: #ffffff;
-  border-radius: 3px;
   width: 180px;
   height: 310px;
   display: flex;
@@ -47,4 +46,9 @@ export const StyledLabelCategory = styled.h2`
   color: #212529;
   margin: 0;
   text-transform: uppercase;
+`;
+
+export const StyledImage = styled.img`
+  border-radius: 3px;
+  width: 180px;
 `;

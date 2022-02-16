@@ -16,7 +16,7 @@ export const StyledContainer = styled.div`
     padding-right: 10px;
   }
 
-  @media (max-width: 1020px) {
+  @media (max-width: 1080px) {
     padding-top: 12px;
     padding-left: 20px;
     padding-right: 20px;
@@ -29,24 +29,33 @@ export const StyledContainerGrid = styled.div`
 `;
 
 export const StyledGridLogo = styled.div`
-  width: 50%;
+  width: 70%;
+  @media (max-width: 1080px) {
+    width: 50%;
+  }
 `;
 
 export const StyledGridPages = styled.div`
-  width: 25%;
+  width: 15%;
+  @media (max-width: 1080px) {
+    width: 25%;
+  }
 `;
 export const StyledGridSocialMedia = styled.div`
-  width: 25%;
+  width: 15%;
+  @media (max-width: 1080px) {
+    width: 25%;
+  }
 `;
 
 export const StyledGridIconsSocialMedia = styled.div`
   display: flex;
   justify-content: space-evenly;
-  width: 50%;
+  width: 60%;
   margin-left: -6px;
 
   @media (max-width: 450px) {
-    width: 100%;
+    width: 80%;
   }
 `;
 

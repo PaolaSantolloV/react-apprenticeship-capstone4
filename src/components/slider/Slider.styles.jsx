@@ -14,7 +14,7 @@ export const StyledSliderShow = styled.div`
 
 export const StyledImage = styled.img`
   width: 100%;
-  border-radius: 4px;
+  border-radius: 3px;
 `;
 
 export const StyledSlide = styled.div`

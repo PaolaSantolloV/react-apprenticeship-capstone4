@@ -13,3 +13,8 @@ export const StyledLabel = styled.h2`
   text-align: center;
   margin: 2px;
 `;
+
+export const StyledImage = styled.img`
+  border-radius: 3px;
+  width: 180px;
+`;
