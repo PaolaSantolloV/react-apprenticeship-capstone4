@@ -4,7 +4,7 @@ import { StyledContainer, StyledLabel } from "./Tag.styles";
 // eslint-disable-next-line react/prop-types
 function Tag({ label }) {
   return (
-    <StyledContainer>
+    <StyledContainer title="tag">
       <StyledLabel>{label}</StyledLabel>
     </StyledContainer>
   );
