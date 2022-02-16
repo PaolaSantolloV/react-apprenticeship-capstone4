@@ -30,7 +30,7 @@ function Tabs({ description, tableInformation }) {
       <StyledContainerTitles>
         <StyledWrapperTitle border={borderDescription}>
           <StyledLabelTitles onClick={handleOnClick}>
-            Descripcion
+            Description
           </StyledLabelTitles>
         </StyledWrapperTitle>
         <StyledWrapperTitle border={borderDetails}>

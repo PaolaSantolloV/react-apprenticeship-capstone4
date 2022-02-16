@@ -24,7 +24,9 @@ function AppRouter() {
             exact
             path="/checkout"
             element={
-              productsCart.length > 0 ? (
+              productsCart === null ? (
+                <Navigate replace to="/cart" />
+              ) : productsCart.length > 0 ? (
                 <CheckoutPage />
               ) : (
                 <Navigate replace to="/cart" />
