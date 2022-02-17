@@ -20,7 +20,11 @@ function GalleryImages({ images }) {
     }
   }, []);
 
-  return <ImageGallery items={imagesGallery} showPlayButton={false} />;
+  return (
+    <div title="gallery-images">
+      <ImageGallery items={imagesGallery} showPlayButton={false} />
+    </div>
+  );
 }
 
 export default GalleryImages;

@@ -44,7 +44,7 @@ function Slider() {
   }, [index]);
 
   return (
-    <StyledContainer>
+    <StyledContainer title="slider">
       <StyledSliderShow
         style={{ transform: `translate3d(${-index * 100}%, 0, 0)` }}
       >

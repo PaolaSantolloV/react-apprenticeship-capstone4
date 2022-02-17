@@ -180,6 +180,10 @@ describe("<Pagination />", () => {
       },
     ];
     const currentItems = jest.fn();
+    const setItemOffset = jest.fn();
+    const useItemOffset = jest.spyOn(React, "useState");
+    useItemOffset.mockImplementation([0, setItemOffset]);
+
     const { getByTitle, getByText } = render(
       <Pagination products={listProducts} setCurrentItems={currentItems} />
     );
