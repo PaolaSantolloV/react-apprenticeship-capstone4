@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
 import IconButton from "../iconButton/IconButton.component";
 import SearchInput from "../searchInput/SearchInput.component";
@@ -10,11 +11,13 @@ import {
 } from "./Header.styles";
 
 // eslint-disable-next-line react/prop-types
-function Header({ handleNavigateHome }) {
+function Header() {
+  const navigate = useNavigate();
+
   return (
     <StyledContainer title="header">
       <StyledContainerLeft>
-        <StyledLabel onClick={handleNavigateHome}>Furniture</StyledLabel>
+        <StyledLabel onClick={() => navigate("/home")}>Furniture</StyledLabel>
       </StyledContainerLeft>
       <StyledContainerRigth>
         <SearchInput />

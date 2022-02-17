@@ -9,4 +9,5 @@ export const StyledButton = styled.button`
   justify-content: center;
   display: flex;
   padding: 0;
+  cursor: pointer;
 `;

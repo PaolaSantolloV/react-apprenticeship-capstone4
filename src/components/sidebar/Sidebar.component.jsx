@@ -1,21 +1,29 @@
 import React, { useState } from "react";
-import feauturedCategories from "../../utils/mocks/product-categories.json";
+import PropTypes from "prop-types";
 import { FiFilter } from "react-icons/fi";
 import {
   Divider,
   StyledLabelCategory,
+  StyledLabelClear,
   StyledLabelFilter,
   StyledWrapperCategories,
   StyledWrapperCategory,
   StyledWrapperFilter,
 } from "./Sidebar.styles";
 import Checkbox from "../checkbox/Checkbox.component";
+import Loading from "../loading/Loading.component";
+import { useGlobalContext } from "../../context/global/Global.provider";
 
 // eslint-disable-next-line react/prop-types
-function Sidebar({ handleCheck }) {
-  const [isShowCategories, setIsShowCategories] = useState(false);
+function Sidebar({ handleCheck, checked, handleClearFilters }) {
+  const { categoriesResult } = useGlobalContext();
 
-  const categories = feauturedCategories.results;
+  const categories =
+    categoriesResult.isLoading === false ? categoriesResult.data.results : [];
+
+  const [isShowCategories, setIsShowCategories] = useState(
+    checked.length > 0 ? true : false
+  );
 
   const handleShowCategories = () => {
     setIsShowCategories(!isShowCategories);
@@ -29,17 +37,34 @@ function Sidebar({ handleCheck }) {
       </StyledWrapperFilter>
       {isShowCategories === true && (
         <StyledWrapperCategories>
-          {categories.map((category) => (
-            <StyledWrapperCategory key={category.data.name}>
-              <Checkbox value={category.id} onChange={handleCheck} />
-              <StyledLabelCategory>{category.data.name}</StyledLabelCategory>
-            </StyledWrapperCategory>
-          ))}
+          {categoriesResult.isLoading === true ? (
+            <Loading />
+          ) : (
+            categories.map((category) => (
+              <StyledWrapperCategory key={category.data.name}>
+                <Checkbox
+                  value={category.id}
+                  onChange={handleCheck}
+                  onCheck={checked.indexOf(category.id) === -1 ? false : true}
+                />
+                <StyledLabelCategory>{category.data.name}</StyledLabelCategory>
+              </StyledWrapperCategory>
+            ))
+          )}
         </StyledWrapperCategories>
+      )}
+      {checked.length > 0 && (
+        <div onClick={() => handleClearFilters()}>
+          <StyledLabelClear>Clear filters</StyledLabelClear>
+        </div>
       )}
       <Divider />
     </div>
   );
 }
+
+Sidebar.propTypes = {
+  checked: PropTypes.arrayOf([]),
+};
 
 export default Sidebar;

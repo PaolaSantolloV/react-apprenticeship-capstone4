@@ -1,27 +1,12 @@
-import React, { useState } from "react";
-import Layout from "./components/layout/Layout.component";
-import HomePage from "./pages/home/Home.page";
-import ProductListPage from "./pages/productList/ProductList.page";
+import React from "react";
+import GlobalProvider from "./context/global/Global.provider";
+import AppRouter from "./routers/AppRouter";
 
 function App() {
-  const [isHomePage, setIsHomePage] = useState(true);
-
-  const handleNavigateHome = () => {
-    setIsHomePage(true);
-  };
-
-  const handleNavigateProductList = () => {
-    setIsHomePage(false);
-  };
-
   return (
-    <Layout handleNavigateHome={handleNavigateHome}>
-      {isHomePage === true ? (
-        <HomePage handleNavigateProductList={handleNavigateProductList} />
-      ) : (
-        <ProductListPage />
-      )}
-    </Layout>
+    <GlobalProvider>
+      <AppRouter />
+    </GlobalProvider>
   );
 }
 

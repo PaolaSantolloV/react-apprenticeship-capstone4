@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const StyledContainer = styled.div`
   margin: 15px;
   margin-top: 20px;
+  cursor: pointer;
 `;
 
 export const StyledLabel = styled.h2`

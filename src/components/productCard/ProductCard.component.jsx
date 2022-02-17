@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../button/Button.component";
 import {
   StyledContainerCard,
   StyledLabelCategory,
@@ -9,7 +10,7 @@ import {
 } from "./ProductCard.styles";
 
 // eslint-disable-next-line react/prop-types
-function ProductCard({ name, category, price, image }) {
+function ProductCard({ name, category, price, image, onClick }) {
   return (
     <StyledContainerCard title="product-card">
       <StyledImage src={image} alt={name} />
@@ -17,6 +18,14 @@ function ProductCard({ name, category, price, image }) {
         <StyledLabelName>{name}</StyledLabelName>
         <StyledLabelCategory>{category}</StyledLabelCategory>
         <StyledLabelPrice>$ {price}</StyledLabelPrice>
+        <Button
+          label="Add to Card"
+          bgColor="#F8F9FA"
+          color="#ADB5BD"
+          width="160px"
+          height="25px"
+          onClick={onClick}
+        />
       </StyledWrapperInformation>
     </StyledContainerCard>
   );
