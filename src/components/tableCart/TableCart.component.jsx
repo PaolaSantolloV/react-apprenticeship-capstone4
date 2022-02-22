@@ -22,7 +22,6 @@ import { storageCart } from "../../utils/storage";
 import { useNavigate } from "react-router-dom";
 
 function TableCart({ tableInformation, handleRemove }) {
-  console.log(tableInformation);
   const navigate = useNavigate();
   const [total, setTotal] = useState();
 
