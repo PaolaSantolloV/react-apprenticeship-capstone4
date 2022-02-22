@@ -230,3 +230,14 @@ export const StyledWrapperTags = styled.div`
   flex-flow: row wrap;
   display: inline-flex;
 `;
+
+export const StyledLabelAdded = styled.h1`
+  font-family: "Mulish";
+  font-size: medium;
+  font-weight: 500;
+  color: #212529;
+  text-align: end;
+  padding-right: 25px;
+  padding-bottom: 10px;
+  margin: 0;
+`;

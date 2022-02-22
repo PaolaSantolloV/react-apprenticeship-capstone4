@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useSearch } from "../../utils/hooks/useSearch";
 import Loading from "../../components/loading/Loading.component";
 import ProductCard from "../../components/productCard/ProductCard.component";
-import { StyledWrapperProducts } from "./Search.styles";
+import { StyledLabelEmpty, StyledWrapperProducts } from "./Search.styles";
 import Pagination from "../../components/pagination/Pagination.component";
 
 // eslint-disable-next-line react/prop-types
@@ -42,7 +42,9 @@ function SearchPage() {
           />
         </StyledWrapperProducts>
       ) : (
-        <h1>We can not find products matching with the search.</h1>
+        <StyledLabelEmpty>
+          We can not find products matching with the search.
+        </StyledLabelEmpty>
       )}
     </div>
   );

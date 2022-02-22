@@ -1,8 +1,17 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { StyledButton } from "./Button.styles";
 
-// eslint-disable-next-line react/prop-types
-function Button({ title, label, onClick, width, color, bgColor, height }) {
+function Button({
+  title,
+  label,
+  onClick,
+  width,
+  color,
+  bgColor,
+  height,
+  disabled,
+}) {
   return (
     <StyledButton
       title={title}
@@ -11,6 +20,7 @@ function Button({ title, label, onClick, width, color, bgColor, height }) {
       color={color}
       bgColor={bgColor}
       height={height}
+      disabled={disabled}
     >
       {label}
     </StyledButton>

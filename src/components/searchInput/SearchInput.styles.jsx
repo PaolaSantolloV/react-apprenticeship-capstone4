@@ -16,4 +16,5 @@ export const StyledInput = styled.input`
   background: transparent;
   width: 91px;
   outline: none;
+  color: #343a40;
 `;

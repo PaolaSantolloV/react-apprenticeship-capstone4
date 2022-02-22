@@ -20,8 +20,6 @@ function ProductCard({ name, category, price, image, onClick }) {
         <StyledLabelPrice>$ {price}</StyledLabelPrice>
         <Button
           label="Add to Card"
-          bgColor="#F8F9FA"
-          color="#ADB5BD"
           width="160px"
           height="25px"
           onClick={onClick}
