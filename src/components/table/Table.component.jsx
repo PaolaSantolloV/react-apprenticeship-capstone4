@@ -10,7 +10,7 @@ import {
 function Table(tableInformation) {
   return (
     <StyledContainer>
-      <StyledLinesTable>
+      <StyledLinesTable title="table">
         {tableInformation.tableInformation.length > 0 &&
           tableInformation.tableInformation.map((row) => (
             <tr key={row.spec_name}>

@@ -10,7 +10,7 @@ import {
 function FormCustumerInformation({ handleChange, formData }) {
   return (
     <>
-      <StyledWrapper>
+      <StyledWrapper title="form-custumer">
         <Input
           label="First Name"
           title="first-name-input"

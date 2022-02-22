@@ -3,7 +3,7 @@ import { StyledLoading } from "./Loading.styles";
 
 // eslint-disable-next-line react/prop-types
 function Loading() {
-  return <StyledLoading />;
+  return <StyledLoading title="loading" />;
 }
 
 export default Loading;

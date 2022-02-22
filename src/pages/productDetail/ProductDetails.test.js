@@ -1,20 +1,20 @@
 import React from "react";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom";
-import HomePage from "./Home.page";
 import { GlobalContext } from "../../context/global/Global.provider";
 import { MemoryRouter } from "react-router-dom";
+import ProductDetailPage from "./ProductDetail.page";
 
-describe("<HomePage />", () => {
-  test("should render HomePage correctly", () => {
+describe("<ProductDetail />", () => {
+  test("should render ProductDetail correctly", () => {
     const { getByTitle } = render(
       <GlobalContext.Provider>
         <MemoryRouter>
-          <HomePage />
+          <ProductDetailPage />
         </MemoryRouter>
       </GlobalContext.Provider>
     );
-    const home = getByTitle("home-page");
+    const home = getByTitle("product-detail");
     expect(home).toBeInTheDocument();
   });
 });

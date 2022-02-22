@@ -22,7 +22,7 @@ function Pagination({ products, setCurrentItems }) {
   };
 
   return (
-    <StyledContainer>
+    <StyledContainer title="pagination">
       <ReactPaginate
         breakLabel="..."
         nextLabel="next >"

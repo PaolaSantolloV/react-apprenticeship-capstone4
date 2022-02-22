@@ -26,7 +26,7 @@ function Tabs({ description, tableInformation }) {
   };
 
   return (
-    <StyledContainer>
+    <StyledContainer title="tabs">
       <StyledContainerTitles>
         <StyledWrapperTitle border={borderDescription}>
           <StyledLabelTitles onClick={handleOnClick}>
@@ -34,12 +34,16 @@ function Tabs({ description, tableInformation }) {
           </StyledLabelTitles>
         </StyledWrapperTitle>
         <StyledWrapperTitle border={borderDetails}>
-          <StyledLabelTitles onClick={handleOnClick}>Details</StyledLabelTitles>
+          <StyledLabelTitles title="details" onClick={handleOnClick}>
+            Details
+          </StyledLabelTitles>
         </StyledWrapperTitle>
       </StyledContainerTitles>
 
       <StyledContainerDescription display={displayDescription}>
-        <StyledLabelDescription>{description}</StyledLabelDescription>
+        <StyledLabelDescription title="description">
+          {description}
+        </StyledLabelDescription>
       </StyledContainerDescription>
       <StyledContainerDetails display={displayDetails}>
         <Table tableInformation={tableInformation} />

@@ -1,5 +1,5 @@
+/* eslint-disable react/prop-types */
 import React, { useState } from "react";
-import PropTypes from "prop-types";
 import { FiFilter } from "react-icons/fi";
 import {
   Divider,
@@ -62,9 +62,5 @@ function Sidebar({ handleCheck, checked, handleClearFilters }) {
     </div>
   );
 }
-
-Sidebar.propTypes = {
-  checked: PropTypes.arrayOf([]),
-};
 
 export default Sidebar;
