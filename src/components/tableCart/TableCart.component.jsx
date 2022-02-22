@@ -22,6 +22,7 @@ import { storageCart } from "../../utils/storage";
 import { useNavigate } from "react-router-dom";
 
 function TableCart({ tableInformation, handleRemove }) {
+  console.log(tableInformation);
   const navigate = useNavigate();
   const [total, setTotal] = useState();
 
@@ -52,8 +53,8 @@ function TableCart({ tableInformation, handleRemove }) {
 
   return (
     <StyledContainer>
-      <StyledLabelOrder>Your order</StyledLabelOrder>
-      <StyledLinesTable>
+      <StyledLabelOrder title="label-order">Your order</StyledLabelOrder>
+      <StyledLinesTable title="table-cart">
         {tableInformation.length > 0 &&
           tableInformation.map((row) => (
             <StyledRow key={row.id}>
